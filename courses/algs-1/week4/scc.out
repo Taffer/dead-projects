@@ -1,0 +1,12 @@
+test-oleg.txt graph has 16 nodes
+Five largest SCCs: 8,5,2,1
+test10.7.txt graph has 9 nodes
+Five largest SCCs: 3,3,3
+test2.txt graph has 11 nodes
+Five largest SCCs: 4,3,3,1
+test4.txt graph has 8 nodes
+Five largest SCCs: 3,3,2
+test5.txt graph has 12 nodes
+Five largest SCCs: 6,3,2,1
+test6.txt graph has 50 nodes
+Five largest SCCs: 35,7,1,1,1

@@ -1,0 +1,18 @@
+''' SCons targets for cryptopals-c. '''
+# Never, ever do this in real Python code: pylint: disable=E0602, C0103
+
+import os
+
+Import('env')
+
+# Build targets
+cryptopals = env.Library('libcryptopals', env.Glob('src/*.c'))
+
+# Build the tests.
+###############################################################################
+# Tests
+TEST_SRC = env.Glob('tests/*.c')
+
+# Build the tests.
+env.Program('cryptopals', TEST_SRC, CPPPATH=['src', 'tests'],
+            LIBS=[cryptopals], LIBPATH=['.'])

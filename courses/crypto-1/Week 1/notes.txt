@@ -1,0 +1,52 @@
+Course Overview
+
+- crypto to protect data
+- SSL: handshake to make a shared secret key, data encoded using secret key
+- never use proprietary ciphers
+- crypto won't protect against software bugs or social engineering
+
+What is cryptography?
+
+- establish a secret key, use it to secure communication (confidentiality,
+  integrity)
+- digital signatures
+- anonymous communication (mix net - sequence of crypto proxies)
+- anonymous digital cash
+- Theorem: Anything that can be done with a trusted authority can also be
+           done without one.
+- privately outsourcing computation
+- zero knowledge (proof of knowledge)
+- three steps:
+  1) precisely specify threat model
+  2) propose a construction
+  3) prove that breaking the construction under the threat model will solve
+     an underlying hard problem
+
+History of cryptography
+
+- substitution cipher - 26! key space ~= 2^88, 88-bit
+- Caesar chiper - not really a cipher, no key... rot-3
+- breaking substitution cipher: freq. of letters, freq. of pairs of letters
+  (digrams); vulnerable to ciphertext-only attack (the easiest)
+- Vigener cipher; easy to break if you know key length; ciphertext-only attack
+- rotor machines, like Enigma; ciphertext-only attack at Bletchley Park
+- DES (56-bit key, 64-bit bock size), AES (128-bit key), Salsa20
+
+Discrete probability
+
+- U: finite set, eg. U = { 0,1 } ^n
+- probability distrubtion P over U is a function P: U -> [0,1] such that
+  the (sum of all the weights)P(x) = 1
+  - Uniform distribution: all weights of U: P(x) = 1/|U|
+    (every element in the set has the same weight or distribution)
+  - Point distribution at x0: P(x0) = 1, all x != x0: P(x) = 0
+    (all probability in P(x0), all other points get 0 probability)
+- distribution vector: p(0), p(1), ... p(n)
+- if A is a subset of U, the probably of A is the sum of the probability of
+  the items in A; this is called an event
+- union bound, for events A1 and A2, the probability of the union is <= the
+  sum of the probably of A1 and A2
+** Read wiki page!
+Theorem: given A, a random variable over { 0, 1 } ^n and X an independent
+         uniform variable over { 0, 1 } ^n, then y:=A xor X is a uniform
+         variable on { 0, 1 } ^n

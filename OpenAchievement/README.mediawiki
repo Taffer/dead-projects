@@ -1,0 +1,64 @@
+OpenAchievement is a project attempting to provide a platform-agnostic, open
+source achievement/award/trophy web site and service.
+
+== Achievements ==
+
+XBox and Steam achievements, PS3 trophies, Kongregate badges and other similar
+awards let you celebrate your progress and interesting accomplishments. The
+problem is, these are all separate... to see them all in one place you'll have
+to subscribe to a third-party system like [[http://www.raptr.com/|Raptr]] or
+[[http://www.gamerdna.com/|GamerDNA]].
+
+Developers either have to waste their valuable development time rolling their
+own achievement system, or they have to tie their achievements to a specific
+platform.
+
+=== The Site ===
+
+The site will provide a place for ''Players'':
+
+* One login for all OpenAchievement games.
+* One place to see your achievements.
+* One place to see what achievements are in your games.
+* See what other games your friends, favourite developers and publishers have.
+
+For ''Developers'':
+
+* Create achievements for your games:
+** Upload (or enter) names and descriptions.
+** Upload images.
+** Assign ''Award Points'' or use standard categories: Bronze (5), Silver (10), Gold (25) and Diamond (50).
+** Flag hidden achievements as ''Secret''.
+* Use the OpenAchievement APIs to handle game registration, achievement rewards, ''etc.''
+* View stats about the number of players you have, achievements you've given, ''etc.''
+
+For ''Publishers'':
+
+* Organize the ''Developers'' you publish.
+* View stats about the number of players, achievements, ''etc.''
+
+== Files ==
+
+; ''achievement''
+: Source code for the OpenAchievement web site. Python 2.7 and Flask.
+; ''Open Achievement Braindump.mm''
+: A [[http://freemind.sourceforge.net/wiki/index.php/Main_Page|FreeMind]] design document for OpenAchievement.
+
+== License ==
+
+I haven't decided yet, but it'll be one that lets you do whatever you want with
+the code as long as you give credit to the OpenAchievement project and provide a
+link to the GitHub repository. [[mailto:chrish@pobox.com|Suggestions welcome!]]
+Probably [[http://creativecommons.org/licenses/by/4.0/|CC - Attribution 4.0 International]].
+
+I want the site to be a common location for people to show off their achievements,
+but I also want to let companies run their own achievements if they don't want to
+use the public site (maybe you want to have an internal achievements system for
+software builds, or your company requires a branded version).
+
+== Who ==
+
+[[mailto:chrish@pobox.com|Chris Herborth]] is slowly but surely making this.
+
+I wanted achievements in the [[https://twitter.com/marooned_game|game]] I'm
+working on, and figured everyone else shouldn't have to write their own too.

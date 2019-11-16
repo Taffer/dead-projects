@@ -1,0 +1,6 @@
+*.userprefs
+bin
+*.pidb
+obj
+.DS_Store
+*.pyc

@@ -1,0 +1,4 @@
+# splint config
+-strict
+-strict-lib
+-globs

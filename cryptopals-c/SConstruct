@@ -1,0 +1,78 @@
+''' SCons build script for cryptopals-c.
+
+http://scons.org/doc/production/HTML/scons-user.html in case you forget.
+'''
+# Never, ever do this in real Python code: pylint: disable=E0602, C0103
+
+import multiprocessing
+
+#############################################################################
+# Setup
+
+# Never, ever do this in real Python code: pylint: disable=E0602, C0103
+SetOption('num_jobs', multiprocessing.cpu_count() * 2)
+
+CPPCHECK_FLAGS = ['-q', '-DDEBUG', '-DNDEBUG',  # Flags for running cppcheck.
+                  '--enable=all',
+                  '--inline-suppr',
+                  '--template=gcc',  # Use gcc-style output format.
+                  '--std=c99',
+                  '--suppress=missingInclude']
+SPLINT_FLAGS = ''  # I have no idea what I'm doing with splint.
+
+env = Environment()
+
+if env['CC'].startswith('gcc'):
+    env.Append(CCFLAGS=['-pipe', '-std=c99'])
+    env.Append(CCFLAGS=['-Wall', '-Wextra', '-Wpedantic',
+                        '-Waggregate-return',
+                        # '-Wbad-function-cast',
+                        '-Wcast-align',
+                        '-Wcast-qual',
+                        # '-Wconversion',  # Enables -Wsign-conversion and -Wfloat-conversion.
+                        '-Wfloat-conversion',
+                        '-Wfloat-equal',  # We're not using float, but...
+                        '-Winit-self',
+                        '-Wmissing-include-dirs',
+                        '-Wnested-externs',
+                        # '-Wold-style-definition',
+                        # '-Wpadded',
+                        '-Wredundant-decls',
+                        '-Wshadow',
+                        '-Wsign-conversion',
+                        '-Wstrict-prototypes',
+                        '-Wswitch-default',
+                        '-Wuninitialized',
+                        '-Wunused',
+                        '-Wvarargs',
+                        '-Wvla',
+                        '-fstrict-overflow',
+                        '-Wstrict-overflow=4'])  # 5 has too many false positives
+elif env['CC'].startswith('clang'):
+    env.Append(CCFLAGS=['-std=99', '-Weverything'])
+else:
+    print 'I have no idea how to use this compiler: {0}'.format(env['CC'])
+    Exit(1)
+
+if 'release' in COMMAND_LINE_TARGETS:
+    # Use release build options.
+    env.Append(CCFLAGS=['-Os', '-DNDEBUG'])
+else:
+    # Use debug build options as default.
+    env.Append(CCFLAGS=['-O0', '-g', '-DDEBUG'])
+
+if 'lint' in COMMAND_LINE_TARGETS:
+    # Lint everything.
+    c_files = Glob('src/*.c') + Glob('tests/*.c')
+    file_names = ', '.join([str(x) for x in c_files])
+    Execute('cppcheck {0} {1}'.format(CPPCHECK_FLAGS, file_names))
+    # Still figuring out how to use splint...
+    # Execute('splint {0} {1}'.format(SPLINT_FLAGS, file_names))
+
+if 'doc' in COMMAND_LINE_TARGETS:
+    # Make docs.
+    Execute('doxygen doc/Doxyfile')
+
+#############################################################################
+# Build targets.
+SConscript('SConscript', exports={'env': env})

@@ -1,0 +1,47 @@
+dumps
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# =========================
+# Operating System Files
+# =========================
+
+*.exe
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Icon must ends with two \r.
+Icon
+
+# I probably don't have permission to redistribute these. :)
+*.pdf
+
+# Python
+*.pyc
+
+# Xcode artifacts
+DerivedData/
+*.xcodeproj/
+
+# Eclipse artifacts
+Debug/
+Release/

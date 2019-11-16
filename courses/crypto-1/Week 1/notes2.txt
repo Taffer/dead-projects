@@ -1,0 +1,94 @@
+Information Theoretic Security and the One Time Pad
+
+- symmetric ciphers:
+- a cipher defined over ( K, M, C ) (set of all keys [keyspace], all messages,
+  all ciphertexts) is a pair of "efficient" algorithms ( E, D ) where
+  E: K x M -> C, D: K x C -> M; for every key and every message,
+  D( K, E( K, M ) ) = M
+- "efficient" means different things to different people
+- E is often randomized, D is always deterministic
+- one-time pad first example of a 'secure' cipher
+- key is a random bit string as long as the message
+- very fast but long keys, difficult to use in practice
+- infosec:
+  - CT should reveal no "info" about PT
+  - a cipher (E,D) over (K, M, C) has perfect secrecy if,
+    for every two messages M0,M1 in M len(M0) = len(M1) and
+    for every CT in C Pr[ E(K,M0) = C ] = Pr[ E(K,M1) = C]
+    where K is uniform in keyspace
+  - given CT, can't tell if M is M0 or M1 for all M0,M1
+  - most powerful adversary learns nothing about PT from CT
+  - no CT-only attack on a cipher with perfect secrecy, other attacks possible
+- OTP has perfect secrecy
+- theorum: perfect secrecy => |K| >= |M|
+
+Stream Ciphers and Pseudo Random Generators
+
+- making OTP practical
+- replace "random" key by "pseudorandom" key
+- PRG: a func G: {0,1}^S -> {0,1}^N, N >> S (given a seed string, generates a
+  larger string of bits); G is "efficiently" computable by deterministic alg.;
+  output "looks" random
+- E(K,M) = M XOR G(K)
+- D(K,C) = C XOR G(K)
+- stream cipher cannot have perfect secrecy because the key is shorter than
+  the message, security depends on the PRG
+- PRG must be unpredictable
+- weak PRGs (never use): linear congruential generator, glibc's random()
+- epsilon non-negligible: epsilon >= 1/2^30 (likely to happen over 1GB of data)
+- epsilon negligible: epsilon <= 1/2^80 (won't happen over key life)
+
+Attacks on Stream Ciphers and the One Time Pad
+
+- #1 - never use the same key more than once: Project Venona, MS-PPTP, 802.11b
+  WEP, disk encryption
+- network: negotiate a new key for every session (like TLS)
+- disk: do not use a stream cipher
+- #2 - no integrity (OTP is malleable)
+
+Real-world Stream Ciphers
+
+- RC4, used in https and WEP, do not use
+- CSS (DVDs, GSM, Bluetooth), badly broken
+- eStream; seed (s) * nonce (r) -> string much longer than seed
+- E(k,m;r) = m XOR PRG(k;r)
+- Salsa 20: {0,1}^128 or ^256 x {0,1}^64 -> {0,1}^n (max n=2^73 bits)
+
+PRG Security Definitions
+
+- let G:K -> {0,1}^n be a PRG (keyspace = K)
+  choose a random key from K, output G(k) is "indistinguishable"
+  from a uniform distribution over the entire set {0,1}^n
+- statistical tests:
+  - an algorithm A such that A(x) outputs "0" or "1" (0 = not random,
+    1 = random)
+  - A(x) = 1 iff | # of 0 in (x) - # of 1 in (x) | <= 10 * sqrt(n)
+  - A(x) = 1 iff | # of 00 in (x) - n/4 | <= 10 * sqrt(n)
+  - A(x) = 1 iff max-run-of 0 in (x) <= 10 * log2(n)
+- let G:K->{0,1}^n be a PRG and A a statistical test on {0,1}^n, the
+  advantage Adv<sub>PRG</sub>[A,G] is how likely the test is to output a
+  1 when given a ciphertext vs. the chance of how likely it is to output a
+  1 when given a truly random value; Adv is in [0,1]
+- Adv close to 1 = A can distinguish G from random
+- Adv close to 0 = A could not distinguish G from random
+- we say G is a secure PRG if all "efficient" stat. tests have an advantage
+  that is negligible
+- are there provably secure PRGs? unknown! but there are heuristic candidates
+- a secure PRG is unpredictable
+- an unpredictable PRG is secure
+- if next-bit predictors can't distinguish G from random then no statistical
+  test can
+- let P1 and P2 be two distributions of {0,1}^n, we say that P1 and P2 are
+  computationally indistinguishable (denoted P1 squiggly-p P2) if for all
+  "efficient" stat. tests A, A(sample from P1) - A(sample from P2) is
+  negligible
+
+Semantic Security
+
+- what is a secure cipher? CT should reveal no "info" about PT
+- semantic security: for all "efficient" A, Adv<sub>SS</sub>[A,E] is neg.
+
+Stream Ciphers are Semantically Secure
+
+- stream cipher with a secure PRG is semantically secure
+

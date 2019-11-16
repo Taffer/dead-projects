@@ -1,0 +1,17 @@
+{
+    "@python": 3,
+    "linters": {
+        "flake8": {
+            "max-line-length": 132
+        },
+        "pep257": {
+            "ignore": []
+        },
+        "pep8": {
+            "max-line-length": 132
+        },
+        "pylint": {
+            "max-line-length": 132
+        }
+    }
+}

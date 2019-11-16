@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+
+    <title>{% block title %}{% end block %}</title>
+
+    <link rel="stylesheet" href="{{ site_css }}" type="text/css" />
+    <link rel="icon" type="image/png" href="{{ site_icon }}">
+    <link rel="shortcut icon" href="{{ site_favicon }}">
+</head>
+<body>
+    <div id="header">
+        {% block header %}
+        {% end block %}
+    </div>
+
+    <div id="content">
+        {% block content %}
+        {% end block %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        {% end block %}
+
+        <div id="copyright">
+	        <p>
+	        Copyright &copy; 2014
+	        <span class="email"><a href="mailto:{{ admin_email }}">{{ admin_email }}</a></span>.
+	        </p>
+        </div>
+
+        <div id="license">
+            <p>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />
+            This work is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+            Commons Attribution 4.0 International License</a>.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

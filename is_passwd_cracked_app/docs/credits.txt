@@ -1,0 +1,15 @@
+Lock icon by Alexandre Moore (http://sa-ki.deviantart.com/) in his Snowish
+collection (https://www.iconfinder.com/iconsets/snowish).
+
+Password database sourced from Crackstation
+(https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm)
+and SkullSecurity (https://wiki.skullsecurity.org/Passwords).
+
+JavaScript SHA-1 implementation by Paul Johnston
+(http://pajhome.org.uk/crypt/md5).
+
+Cordova SQLite plugin by Chris Brody
+(https://github.com/brodysoft/Cordova-SQLitePlugin).
+
+Inspired by a Tweet by Dan Tentler
+(https://twitter.com/Viss/status/506974673012146176).

@@ -1,0 +1,16 @@
+[submodule "src/external/emoji"]
+	path = src/external/emoji
+	url = git@github.com:carpedm20/emoji.git
+	branch = master
+[submodule "src/external/CommonMark"]
+	path = src/external/CommonMark
+	url = git@github.com:rolandshoemaker/CommonMark-py.git
+	branch = master
+[submodule "external/is_passwd_cracked"]
+	path = external/is_passwd_cracked
+	url = git@github.com:Taffer/is_passwd_cracked.git
+	branch = master
+[submodule "src/external/is_passwd_cracked"]
+	path = src/external/is_passwd_cracked
+	url = git@github.com:Taffer/is_passwd_cracked.git
+	branch = master

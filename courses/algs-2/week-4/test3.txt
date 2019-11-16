@@ -1,0 +1,34 @@
+# Here is one with 8 vertices, 9 edges and a negative cycle, Startvertex is 1:
+#
+# Result-Array after 8 iterations is (vertices in  left column, sum of costs of shortest path to that vertice in right column)
+#
+# 1 0
+# 2 -26
+# 3 -24
+# 4 -25
+# 5 -17
+# 6 -24
+# 7 0
+# 8 -2
+#
+# And after 9 iterations Result-Array looks like this ((vertices in left column, sum of costs of shortest path to that vertice in right column):
+#
+# 1 0
+# 2 -30
+# 3 -28
+# 4 -29
+# 5 -21
+# 6 -28
+# 7 0
+# 8 -2
+#
+8 9
+1 2 6
+1 8 -2
+2 3 -2
+3 4 -1
+4 2 -1
+3 5 7
+5 6 -7
+8 7 2
+7 6 -1

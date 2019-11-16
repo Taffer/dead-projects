@@ -1,0 +1,27 @@
+# Case1 - 10 vertices, 11 edges, no neg. cycle, Startvertex is 1: 
+#
+# Result-Array A looks like this  (vertices in left column, sum of costs of shortest path to that vertice in right column):
+#
+# 1 0
+# 2 2
+# 3 0
+# 4 7
+# 5 19
+# 6 5
+# 7 8
+# 8 7
+# 9 11
+# 10 17
+#
+10 11
+1 2 2
+1 7 8
+2 3 -2
+3 4 7
+4 5 12
+5 8 3
+7 6 -3
+6 8 2
+8 9 4
+9 10 6
+4 10 13

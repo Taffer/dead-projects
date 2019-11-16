@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.3"
+# command to install dependencies
+install:
+  - pip install flake8
+  - pip install pep8
+  - pip install pep257
+  - pip install pylint
+# command to run tests
+script:
+  - flake8 . --max-line-length=120
+  - pep8 . --max-line-length=132
+  - pep257 .
+  - pylint .

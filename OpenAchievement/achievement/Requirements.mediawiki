@@ -1,0 +1,4 @@
+Requirements for installing/running the OpenAchievement site:
+
+* [[http://www.python.org/|Python 2.7]]
+* [[http://flask.pocoo.org/|Flask]] - <code>pip install flask</code>

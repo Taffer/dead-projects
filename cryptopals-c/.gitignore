@@ -1,0 +1,50 @@
+# Dang it.
+.DS_Store
+
+# Sublime Text
+*.sublime-workspace
+
+# Compiled binaries
+hex2base64_test
+
+# Cores
+*.stackdump
+
+# Doxygen generated docs
+doc/html
+
+# SCons generated files
+.sconsign.dblite
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
